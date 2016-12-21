@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:itcast="http://schemas.android.com/apk/res/com.example.administrator.myguard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/titlebar"/>
+<com.example.administrator.myguard.m10settings.widget.SettingView
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    itcast:status_on="黑名单拦截已开启"></com.example.administrator.myguard.m10settings.widget.SettingView>
+</LinearLayout>
