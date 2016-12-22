@@ -1,9 +1,12 @@
 package com.example.administrator.myguard;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.TextView;
+
+import com.example.administrator.myguard.m1home.utils.MyUtils;
+import com.example.administrator.myguard.m1home.utils.VersionUpdateUtils;
 
 public class SplashActivity extends AppCompatActivity {
     private TextView mVersionTV;
@@ -13,6 +16,17 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
-        mVersion=MyUtils.get
+        mVersion=MyUtils.getVersion(getApplicationContext());
+        initView();
+        final VersioUpdateUtils updateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this);
+        new Thread(){
+            public void run(){
+                updateUtils.getCloudVersion();
+            };
+        }.start();
+    }
+    private void initView(){
+        mVersionTV= (TextView) findViewById(R.id.tv_splash_version);
+        mVersionTV.setText("版本号："+mVersion);
     }
 }

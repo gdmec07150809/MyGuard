@@ -26,7 +26,7 @@ import com.example.administrator.myguard.m3communicationguard.SecurityPhoneActiv
 import com.example.administrator.myguard.m4appmanager.AppManagerActivity;
 import com.example.administrator.myguard.m5virusscan.VirScanActivity;
 import com.example.administrator.myguard.m6cleancache.CacheClearListActivity;
-import com.example.administrator.myguard.m7processmanager.ProcsssManagerActivity;
+import com.example.administrator.myguard.m7processmanager.ProcessManagerActivity;
 import com.example.administrator.myguard.m8trafficmonitor.TrafficMonitoringActivity;
 import com.example.administrator.myguard.m9advancedtools.AdvancedToolsActivity;
 import com.google.android.gms.appindexing.AppIndex;
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(CacheClearListActivity.class);
                         break;
                     case 5:
-                        startActivity(ProcsssManagerActivity.class);
+                        startActivity(ProcessManagerActivity.class);
                         break;
                     case 6:
                         startActivity(TrafficMonitoringActivity.class);

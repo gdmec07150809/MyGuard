@@ -4,16 +4,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.myguard.R;
+import com.example.administrator.myguard.m10settings.utils.SystemInfoUtils;
 import com.example.administrator.myguard.m10settings.widget.SettingView;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener,SettingView.OnCheckedStatusIsChanged{
-private SettingView mBlackNumSV;
+    private SettingView mBlackNumSV;
     private SettingView mAppLockSV;
     private SharedPreferences mSP;
     private boolean running;
@@ -32,15 +34,52 @@ private SettingView mBlackNumSV;
         ((TextView) findViewById(R.id.tv_title)).setText("设置中心");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
-        mBlackNumSV=findViewById();
+        mBlackNumSV= (SettingView) findViewById(R.id.sv_blacknumber_set);
+        mAppLockSV= (SettingView) findViewById(R.id.sv_applock_set);
+        mBlackNumSV.setOncheckedStatusIsChanged(this);
+        mAppLockSV.setOncheckedStatusIsChanged(this);
     }
+
+    @Override
+    protected void onStart() {
+        running= SystemInfoUtils.isServiceRunning(this,"cn.itcast.mobliesafe.chapter09.service.AppLockService");
+        mAppLockSV.setChecked(running);
+        mBlackNumSV.setChecked(mSP.getBoolean("BlackNumStatus",true));
+
+        super.onStart();
+    }
+
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.imgv_leftbtn:
+                finish();
+                break;
+        }
     }
 
     @Override
     public void onCheckedChanged(View view, boolean isChecked) {
-
+        switch (view.getId()){
+            case R.id.sv_blacknumber_set:
+                saveStatus("BlackNumStatus",isChecked);
+                break;
+            case R.id.sv_applock_set:
+                saveStatus("AppLockStatus",isChecked);
+                if(isChecked){
+                    intent=new Intent(this,AppLockService.class);
+                    startService(intent);
+                }else{
+                    stopService(intent);
+                }
+                break;
+        }
+    }
+    private void saveStatus(String keyname,boolean isChecked){
+        if (!TextUtils.isEmpty(keyname)){
+            SharedPreferences.Editor edit=mSP.edit();
+            edit.putBoolean(keyname,isChecked);
+            edit.commit();
+        }
     }
 }
