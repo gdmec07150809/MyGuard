@@ -32,7 +32,7 @@ private SettingView mBlackNumSV;
         ((TextView) findViewById(R.id.tv_title)).setText("设置中心");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
-        mBlackNumSV=findViewById(R.id.sv_bla)
+        mBlackNumSV=findViewById();
     }
     @Override
     public void onClick(View view) {

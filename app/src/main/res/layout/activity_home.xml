@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
@@ -21,7 +22,7 @@
             android:id="@+id/tv_ad"
             android:gravity="center"
             android:paddingTop="30dp"
-            android:text="主银，我是您的手机小护卫"
+            android:text="主银，我是你的手机小护卫"
             android:textColor="#90000000"
             android:textScaleX="1.1"
             android:textSize="16sp"
@@ -42,7 +43,6 @@
             android:horizontalSpacing="10dp"
             android:numColumns="3"
             android:verticalSpacing="10dp">
-
         </GridView>
     </RelativeLayout>
 
