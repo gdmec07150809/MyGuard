@@ -122,10 +122,10 @@ public class HomeActivity extends AppCompatActivity {
                         setUpPasswordDialog.dismiss();
                         showInterPswdDialog();
                     } else {
-                        Toast.makeText(HomeActivity.this, "两次密码不一致!", 0).show();
+                        Toast.makeText(HomeActivity.this, "两次密码不一致!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(HomeActivity.this, "密码不能为空！", 0).show();
+                    Toast.makeText(HomeActivity.this, "密码不能为空！", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -142,7 +142,7 @@ public class HomeActivity extends AppCompatActivity {
     private void showInterPswdDialog() {
         final String password = getPassword();
         final InterPasswordDialog mInPswDialog = new InterPasswordDialog(HomeActivity.this);
-        mInPswDialog.setCallBack(new InterPasswordDialog.MyCallBack() {
+        mInPswDialog.setCanllBack (new InterPasswordDialog.MyCallBack() {
             @Override
             public void confirm() {
                 if (TextUtils.isEmpty(mInPswDialog.getPassword())) {
