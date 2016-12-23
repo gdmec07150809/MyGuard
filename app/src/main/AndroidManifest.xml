@@ -26,12 +26,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".m1home.HomeActivity"/>
-        <activity android:name=".SplashActivity"/>
+        <activity android:name=".SplashActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+        </activity>
         <activity android:name=".m2theftguard.ContactSelectActivity" />
         <activity android:name=".m2theftguard.LostFindActivity" />
         <activity android:name=".m2theftguard.SetUp1Activity" />
@@ -39,10 +40,7 @@
         <activity android:name=".m2theftguard.SetUp3Activity" />
         <activity android:name=".m2theftguard.SetUp4Activity" />
 
-        <service
-            android:name=".m2theftguard.service.GPSLocationService"
-            android:enabled="true"
-            android:exported="true" />
+
 
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReciever"
@@ -76,6 +74,9 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+        <service android:name=".m2theftguard.service.GPSLocationService"
+          android:enabled="true"
+            android:exported="true"/>
         <activity android:name=".m3communicationguard.AddBlackNumberActivity"/>
         <activity android:name=".m3communicationguard.ContactSelectActivity"/>
         <activity android:name=".m3communicationguard.SecurityPhoneActivity"/>
@@ -97,12 +98,34 @@
             </intent-filter>
         </receiver>
         <activity android:name=".m4appmanager.AppManagerActivity"/>
+        <activity android:name=".m5virusscan.VirusScanActivity"/>
+        <activity android:name=".m5virusscan.VirusScanSpeedActivity"/>
+
+
+
+
         <activity android:name=".m7processmanager.ProcessManagerActivity"/>
         <activity android:name=".m7processmanager.ProcessManagerSettingActivity"/>
         <service
             android:name=".m7processmanager.service.AutoKillProcessService"
             android:enabled="true"
             android:exported="true"/>
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
+        <service android:name=".m8trafficmonitor.service.TrafficMonitoringService"
+            android:enabled="true"
+            android:exported="true"
+            android:persistent="true"/>
+        <receiver android:name=".m8trafficmonitor.receiver.BootCompleteReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+
+
 
         <activity android:name=".m10settings.SettingsActivity"></activity>
     </application>

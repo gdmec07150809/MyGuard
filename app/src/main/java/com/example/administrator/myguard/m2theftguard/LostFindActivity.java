@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.administrator.myguard.R;
+
 public class LostFindActivity extends Activity implements View.OnClickListener{
     private TextView mSafePhoneTV;
     private RelativeLayout mInterSetupRL;

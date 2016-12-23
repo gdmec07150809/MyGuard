@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         mVersion=MyUtils.getVersion(getApplicationContext());
         initView();
-        final VersioUpdateUtils updateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this);
+       final VersionUpdateUtils updateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this);
         new Thread(){
             public void run(){
                 updateUtils.getCloudVersion();

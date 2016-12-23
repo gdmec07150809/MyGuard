@@ -66,12 +66,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.sv_applock_set:
                 saveStatus("AppLockStatus",isChecked);
-                if(isChecked){
+                /*if(isChecked){
                     intent=new Intent(this,AppLockService.class);
                     startService(intent);
                 }else{
                     stopService(intent);
-                }
+                }*/
                 break;
         }
     }

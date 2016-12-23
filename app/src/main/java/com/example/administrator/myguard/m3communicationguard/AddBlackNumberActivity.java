@@ -63,7 +63,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                 String number = mNumET.getText().toString().trim();
                 String name = mNameET.getText().toString().trim();
                 if(TextUtils.isEmpty(number)||TextUtils.isEmpty(name)){
-                Toast.makeText(this, "电话号码和手机号不能为空", 0).show();
+                Toast.makeText(this, "电话号码和手机号不能为空",Toast.LENGTH_SHORT).show();
                 return;
 
             }else{

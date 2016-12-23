@@ -5,6 +5,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.administrator.myguard.R;
+
 public class SetUp1Activity extends BaseSetUpActivity {
 
     @Override

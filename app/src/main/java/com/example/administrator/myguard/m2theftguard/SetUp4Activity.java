@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.administrator.myguard.R;
+
 public class SetUp4Activity extends BaseSetUpActivity {
 private TextView mStatusTV;
     private ToggleButton mToggleButton;

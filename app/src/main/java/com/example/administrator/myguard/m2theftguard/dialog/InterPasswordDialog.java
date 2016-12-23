@@ -14,7 +14,7 @@ import com.example.administrator.myguard.R;
 /**
  * Created by Administrator on 2016/12/19.
  */
-public class InterPasswordDialog extends Dialog implements android.view.View.OnClickListener{
+public class InterPasswordDialog extends Dialog implements View.OnClickListener{
     private TextView mTitleTV;
     private EditText mInterET;
     private Button mOKBtn;

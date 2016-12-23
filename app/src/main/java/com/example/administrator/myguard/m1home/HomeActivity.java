@@ -24,13 +24,9 @@ import com.example.administrator.myguard.m2theftguard.receiver.MyDeviceAdminReci
 import com.example.administrator.myguard.m2theftguard.utils.MD5Utils;
 import com.example.administrator.myguard.m3communicationguard.SecurityPhoneActivity;
 import com.example.administrator.myguard.m4appmanager.AppManagerActivity;
-import com.example.administrator.myguard.m5virusscan.VirScanActivity;
 import com.example.administrator.myguard.m6cleancache.CacheClearListActivity;
 import com.example.administrator.myguard.m7processmanager.ProcessManagerActivity;
 import com.example.administrator.myguard.m8trafficmonitor.TrafficMonitoringActivity;
-import com.example.administrator.myguard.m9advancedtools.AdvancedToolsActivity;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -38,11 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     private DevicePolicyManager policyManager;
     private ComponentName componentName;
     private long mExitTime;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(AppManagerActivity.class);
                         break;
                     case 3:
-                        startActivity(VirScanActivity.class);
+                       /* startActivity(VirScanActivity.class);*/
                         break;
                     case 4:
                         startActivity(CacheClearListActivity.class);
@@ -84,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(TrafficMonitoringActivity.class);
                         break;
                     case 7:
-                        startActivity(AdvancedToolsActivity.class);
+                        /*startActivity(AdvancedToolsActivity.class);*/
                         break;
                     case 8:
                         startActivity(SettingsActivity.class);
@@ -103,9 +95,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
 
@@ -146,13 +136,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void confirm() {
                 if (TextUtils.isEmpty(mInPswDialog.getPassword())) {
-                    Toast.makeText(HomeActivity.this, "密码不能为空！", 0).show();
+                    Toast.makeText(HomeActivity.this, "密码不能为空！", Toast.LENGTH_SHORT).show();
                 } else if (password.equals(MD5Utils.encode(mInPswDialog.getPassword()))) {
                     mInPswDialog.dismiss();
                     startActivity(LostFindActivity.class);
                 } else {
                     mInPswDialog.dismiss();
-                    Toast.makeText(HomeActivity.this, "密码有误，请重新输入！", 0).show();
+                    Toast.makeText(HomeActivity.this, "密码有误，请重新输入！", Toast.LENGTH_SHORT).show();
                 }
             }
 

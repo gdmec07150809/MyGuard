@@ -1,7 +1,6 @@
 package com.example.administrator.myguard.m2theftguard.adapter;
 
 import android.content.Context;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -43,7 +42,7 @@ public class ContactAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder=null;
         if(convertView==null){
-            convertView=View.inflate(context,R.layout.item_list_contact_select,null);
+            convertView=View.inflate(context, R.layout.item_list_contact_select,null);
             holder=new ViewHolder();
             holder.mNameTV= (TextView) convertView.findViewById(R.id.tv_name);
             holder.mPhoneTv= (TextView) convertView.findViewById(R.id.tv_phone);

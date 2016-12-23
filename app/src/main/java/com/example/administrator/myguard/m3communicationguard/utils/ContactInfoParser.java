@@ -53,7 +53,7 @@ public class ContactInfoParser {
     public static List<ContactInfo> getSimContacts(Context context){
         Uri uri = Uri.parse("content://icc/adn");
         List<ContactInfo>infos=new ArrayList<ContactInfo>();
-        Cursor mCursor = context.getContentResolver().query(uri,null,null.null,null);
+        Cursor mCursor = context.getContentResolver().query(uri,null,null,null,null);
         if(mCursor!=null){
             while(mCursor.moveToNext()){
                 ContactInfo info = new ContactInfo();
