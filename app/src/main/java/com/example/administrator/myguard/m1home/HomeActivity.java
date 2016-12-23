@@ -34,14 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     private DevicePolicyManager policyManager;
     private ComponentName componentName;
     private long mExitTime;
-<<<<<<< HEAD
 
-=======
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
->>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +95,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-<<<<<<< HEAD
 
-=======
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
->>>>>>> origin/master
     }
 
 
@@ -124,7 +112,7 @@ public class HomeActivity extends AppCompatActivity {
                         setUpPasswordDialog.dismiss();
                         showInterPswdDialog();
                     } else {
-                        Toast.makeText(HomeActivity.this, "两次密码不一致!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "两次密码不一致!", Toast.LENGTH_LONG).show();
                     }
                 } else {
                     Toast.makeText(HomeActivity.this, "密码不能为空！", Toast.LENGTH_SHORT).show();

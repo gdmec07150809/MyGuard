@@ -1,20 +1,12 @@
 package com.example.administrator.myguard.m9advancedtools.fragment;
 
-<<<<<<< HEAD
 
-=======
-import android.app.Fragment;
-import android.database.ContentObservable;
->>>>>>> origin/master
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-<<<<<<< HEAD
 import android.support.v4.app.Fragment;
-=======
->>>>>>> origin/master
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,26 +16,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-<<<<<<< HEAD
-=======
-import com.example.administrator.myguard.App;
->>>>>>> origin/master
 import com.example.administrator.myguard.R;
 import com.example.administrator.myguard.m9advancedtools.adapter.AppLockAdapter;
 import com.example.administrator.myguard.m9advancedtools.db.dao.AppLockDao;
 import com.example.administrator.myguard.m9advancedtools.entity.AppInfo;
 import com.example.administrator.myguard.m9advancedtools.utils.AppInfoParser;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.RunnableFuture;
->>>>>>> origin/master
 
 /**
  * Created by dell-pc on 2016/12/19.

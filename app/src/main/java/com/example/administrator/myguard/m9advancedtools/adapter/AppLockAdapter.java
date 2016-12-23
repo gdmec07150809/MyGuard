@@ -1,10 +1,6 @@
 package com.example.administrator.myguard.m9advancedtools.adapter;
 
 import android.content.Context;
-<<<<<<< HEAD
-=======
-import android.database.sqlite.SQLiteOpenHelper;
->>>>>>> origin/master
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
