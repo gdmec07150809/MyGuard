@@ -34,7 +34,14 @@ public class HomeActivity extends AppCompatActivity {
     private DevicePolicyManager policyManager;
     private ComponentName componentName;
     private long mExitTime;
+<<<<<<< HEAD
 
+=======
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+>>>>>>> origin/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +102,12 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+<<<<<<< HEAD
 
+=======
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+>>>>>>> origin/master
     }
 
 
