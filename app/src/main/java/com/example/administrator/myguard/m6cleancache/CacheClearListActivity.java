@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.Formatter;
 import android.view.View;
@@ -81,7 +80,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_cache_clear_list);
@@ -97,7 +96,6 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         ((TextView) findViewById(R.id.tv_title)).setText("缓存扫描");
         mRecomandTV = (TextView) findViewById(R.id.tv_recommend_clean);
         mCanCleanTV = (TextView) findViewById(R.id.tv_can_clean);
-        mCacheLV = (ListView) findViewById(R.id.lv_scancache);
         mCacheLV = (ListView) findViewById(R.id.lv_scancache);
         mCacheBtn = (Button) findViewById(R.id.btn_cleanall);
         mCacheBtn.setOnClickListener(this);
@@ -191,6 +189,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
         public MyPackObserver(PackageInfo info){
             this.info=info;
         }
+        @Override
         public void onGetStatsCompleted(PackageStats pStats, boolean succeeded)
                 throws RemoteException{
             long cachesize=pStats.cacheSize;

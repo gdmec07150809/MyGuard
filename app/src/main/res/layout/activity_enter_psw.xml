@@ -41,8 +41,7 @@
             android:layout_height="match_parent"
             android:hint="请输入防盗密码"
             android:inputType="textPassword"
-            android:background="@null"
-            />
+            android:background="@null" />
 
         <ImageView
             android:id="@+id/imgv_go_enterpsw"

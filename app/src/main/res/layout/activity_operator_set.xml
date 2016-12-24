@@ -15,8 +15,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="60dp"
             android:gravity="center"
-            android:orientation="vertical"
-            >
+            android:orientation="horizontal">
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -48,7 +47,7 @@
                 android:layout_marginLeft="20dp"
                 android:spinnerMode="dropdown"
                 android:background="@drawable/operator_spinner_bg"
-                android:gravity="center"></Spinner>
+                android:gravity="center"/>
 
         </LinearLayout>
 

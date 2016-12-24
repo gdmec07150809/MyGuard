@@ -19,10 +19,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/imageView1"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/toggle_btn_green_selector"
-            android:textOff=""
-            android:textOn=""/>
+           android:text="显示系统进程" />
         <ToggleButton
             android:id="@+id/tgb_showsys_process"
             android:layout_width="70dp"

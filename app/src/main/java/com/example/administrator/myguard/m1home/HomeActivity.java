@@ -24,9 +24,11 @@ import com.example.administrator.myguard.m2theftguard.receiver.MyDeviceAdminReci
 import com.example.administrator.myguard.m2theftguard.utils.MD5Utils;
 import com.example.administrator.myguard.m3communicationguard.SecurityPhoneActivity;
 import com.example.administrator.myguard.m4appmanager.AppManagerActivity;
+import com.example.administrator.myguard.m5virusscan.VirusScanActivity;
 import com.example.administrator.myguard.m6cleancache.CacheClearListActivity;
 import com.example.administrator.myguard.m7processmanager.ProcessManagerActivity;
 import com.example.administrator.myguard.m8trafficmonitor.TrafficMonitoringActivity;
+import com.example.administrator.myguard.m9advancedtools.AdvancedToolsActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -64,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(AppManagerActivity.class);
                         break;
                     case 3:
-                       /* startActivity(VirScanActivity.class);*/
+                       startActivity(VirusScanActivity.class);
                         break;
                     case 4:
                         startActivity(CacheClearListActivity.class);
@@ -76,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(TrafficMonitoringActivity.class);
                         break;
                     case 7:
-                        /*startActivity(AdvancedToolsActivity.class);*/
+                        startActivity(AdvancedToolsActivity.class);
                         break;
                     case 8:
                         startActivity(SettingsActivity.class);
@@ -106,7 +108,7 @@ public class HomeActivity extends AppCompatActivity {
             public void ok() {
                 String firstPwsd = setUpPasswordDialog.mFirstPWDET.getText().toString().trim();
                 String affirmPwsd = setUpPasswordDialog.mAffirmET.getText().toString().trim();
-                if (!TextUtils.isEmpty(firstPwsd) && TextUtils.isEmpty(affirmPwsd)) {
+                if (!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(affirmPwsd)) {
                     if (firstPwsd.equals(affirmPwsd)) {
                         savePwsd(affirmPwsd);
                         setUpPasswordDialog.dismiss();

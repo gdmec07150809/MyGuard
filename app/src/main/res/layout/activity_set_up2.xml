@@ -39,7 +39,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center_vertical|left"
                 android:layout_marginLeft="15dp"
                 android:background="@drawable/recomand_icon"/>
             <TextView

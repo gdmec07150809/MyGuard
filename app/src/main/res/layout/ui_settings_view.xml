@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="55dp">
@@ -8,8 +8,7 @@
         style="@style/textview16sp"
         android:padding="3dp"
         android:text="黑名单设置"
-        android:textColor="@color/bright_blue"
-        />
+        android:textColor="@color/bright_blue" />
     <TextView
         android:id="@+id/tv_setting_status"
         style="@style/textview14sp"
@@ -36,4 +35,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>

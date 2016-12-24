@@ -30,7 +30,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
-        <ToggleButton
+        <TextView
          android:id="@+id/tv_lostfind_protectstauts"
             style="@style/textview16sp"
             android:layout_alignParentLeft="true"

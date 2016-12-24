@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.administrator.myguard.R;
+
 
 /**
  * Created by dell-pc on 2016/12/19.
@@ -39,7 +39,7 @@ public class AdvancedToolsView extends RelativeLayout
         //拿到属性对象的值
         TypedArray mTypedArray=context.obtainStyledAttributes(attrs, R.styleable.AdvancedToolsView);
 
-        desc=mTypedArray.getString(R.styleable.AdvancedToolsView_decs);
+        desc=mTypedArray.getString(R.styleable.AdvancedToolsView_desc);
 
 
 

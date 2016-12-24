@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AdvancedToolsView">
-        <attr name="decs" format="string"/>
+        <attr name="desc" format="string"/>
         <attr name="android:src"/>
     </declare-styleable>
     <declare-styleable name="MyCircleProgress">
