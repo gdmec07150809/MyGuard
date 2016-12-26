@@ -154,8 +154,8 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
     }
 
     @Override
-    public void onClick(View view) {
-     switch (view.getId()){
+    public void onClick(View v ) {
+     switch (v.getId()){
          case R.id.imgv_leftbtn:
              finish();
              break;
@@ -178,11 +178,11 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         manager=(ActivityManager) getSystemService(ACTIVITY_SERVICE);
         int count=0;
         long saveMemory=0;
-        List<TaskInfo>killedtaskInfos=new ArrayList<TaskInfo>();
+        List<TaskInfo> killedtaskInfos=new ArrayList<TaskInfo>();
         for (TaskInfo info:userTaskInfos){
             if (info.isChecked){
                 count++;
-                saveMemory+=info.appMemory;
+                saveMemory += info.appMemory;
                 manager.killBackgroundProcesses(info.packageName);
                 killedtaskInfos.add(info);
             }
@@ -202,13 +202,13 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
                 sysTaskInfos.remove(info);
             }
         }
-        runningProcessCount=count;
+        runningProcessCount -=count;
         mRunProcessNum.setText("运行中的进程："+runningProcessCount+"个");
         mMemoryTV.setText("可用/总内存："
                 +Formatter.formatFileSize(this, SystemInfoUtils.getAvailMem(this))+"/"
                 +Formatter.formatFileSize(this,totalMem));
         Toast.makeText(this,"清理了"+count+"个进程，释放了"
-                    +Formatter.formatFileSize(this,saveMemory)+"内存",Toast.LENGTH_SHORT).show();
+                    +Formatter.formatFileSize(this,saveMemory)+"内存",Toast.LENGTH_LONG).show();
         mProcessNumTV.setText("用户进程："+userTaskInfos.size()+"个");
         adapter.notifyDataSetChanged();
     }

@@ -36,7 +36,7 @@ public class ProcessManagerAdapter extends BaseAdapter{
     }
     @Override
     public int getCount() {
-        if (mSystaskInfos.size()>0&mSP.getBoolean("showSystemProcess",true)){
+        if (mSystaskInfos.size()>0 & mSP.getBoolean("showSystemProcess",true)){
             return mUsertaskInfos.size()+mSystaskInfos.size()+2;
         }else{
             return mUsertaskInfos.size()+1;

@@ -18,14 +18,14 @@ import java.util.List;
 public class ContactInfoParser {
     public static List<ContactInfo> getSystemContact(Context context){
         ContentResolver resolver = context.getContentResolver();
-        Uri uri = Uri.parse("content://com.android.contact/raw_contacts");
+        Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");
         Uri datauri =Uri.parse("content://com.android.contacts/data");
         List<ContactInfo> infos = new ArrayList<ContactInfo>();
         Cursor cursor =resolver.query(uri , new String[]{"contact_id"},null,null,null);
         while (cursor.moveToNext()){
             String id = cursor.getString(0);
             if (id!=null){
-                System.out.println("联系人id"+id);
+                System.out.println("联系人id:"+id);
                 ContactInfo info = new ContactInfo();
                 info.id= id;
                 Cursor dataCursor= resolver.query(datauri,new String[]{

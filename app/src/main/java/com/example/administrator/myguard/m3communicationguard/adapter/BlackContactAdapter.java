@@ -85,8 +85,7 @@ public class BlackContactAdapter extends BaseAdapter{
         return convertView;
     }
 
-    private void DataSizeChanged() {
-    }
+
 
     class ViewHolder{
         TextView mNameTV;

@@ -40,7 +40,7 @@ public class ContactAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if(convertView == null){
             convertView = View.inflate(context, R.layout.item_list_contact_select,null);

@@ -23,12 +23,13 @@ public class TrafficDao {
     public long getMoblesGPRS(String dataString){
         SQLiteDatabase db=helper.getReadableDatabase();
         long gprs=0;
-        Cursor cursor=db.rawQuery("select gprs form traffic where date=?",new String[]{
-                "datetime("+dataString+")"
+        Cursor cursor=db.rawQuery("select gprs from traffic where date=?",new String[]{
+                " datetime(" + dataString + ")"
         });
         if (cursor.moveToNext()){
             String gprsStr=cursor.getString(0);
-            if (!TextUtils.isEmpty(gprsStr))gprs=Long.parseLong(gprsStr);
+            if (!TextUtils.isEmpty(gprsStr))
+                gprs=Long.parseLong(gprsStr);
         }else{
             gprs=-1;
         }

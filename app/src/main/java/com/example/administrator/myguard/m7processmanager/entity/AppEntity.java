@@ -14,10 +14,19 @@ public class AppEntity {
     public Drawable getAppIcon(){
         return appIcon;
     }
+    public void setAppIcon(Drawable appIcon){
+        this.appIcon=appIcon;
+    }
     public String getAppName(){
         return appName;
     }
     public void setAppName(String appName){
+        this.appName=appName;
+    }
+    public String getPackageName(){
+        return packageName;
+    }
+    public void setPackageName(String packageName){
         this.packageName=packageName;
     }
     public double getMemorySize(){

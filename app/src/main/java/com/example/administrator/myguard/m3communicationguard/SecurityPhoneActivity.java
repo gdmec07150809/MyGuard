@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -38,12 +39,30 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_security_phone);
         initview();
         fillData();
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(totalNumber!=dao.getTotalNumber()){
+            if(dao.getTotalNumber()>0){
+                mHaveBlackNumber.setVisibility(View.VISIBLE);
+                mNoBlackNumber.setVisibility(View.GONE);
+            }else{
+                mHaveBlackNumber.setVisibility(View.GONE);
+                mNoBlackNumber.setVisibility(View.VISIBLE);
+            }
+            pageumber=0;
+            pageBlackNumber.clear();
+            pageBlackNumber.addAll(dao.getPageBlackNumber(pageumber,pagesize));
+            if(adapter!=null){
+                adapter.notifyDataSetChanged();
+            }
+        }
+    }
     private void fillData() {
         dao = new BlackNumberDao(SecurityPhoneActivity.this);
         totalNumber= dao.getTotalNumber();
@@ -69,8 +88,10 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
 
                 });
                 mlistView.setAdapter(adapter);
+            }else{
+                adapter.notifyDataSetChanged();
             }
-                    adapter.notifyDataSetChanged();
+
         }
     }
 
@@ -107,31 +128,13 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             }
 
             @Override
-            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+            public void onScroll(AbsListView view, int firstVisibleItem, int visiBleItemCount, int totalItemCount) {
 
             }
         });
         }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(totalNumber!=dao.getTotalNumber()){
-            if(dao.getTotalNumber()>0){
-                mHaveBlackNumber.setVisibility(View.VISIBLE);
-                mNoBlackNumber.setVisibility(View.GONE);
-            }else{
-                mHaveBlackNumber.setVisibility(View.GONE);
-                mNoBlackNumber.setVisibility(View.VISIBLE);
-            }
-            pageumber=0;
-            pageBlackNumber.clear();
-            pageBlackNumber.addAll(dao.getPageBlackNumber(pageumber,pagesize));
-            if(adapter!=null){
-                adapter.notifyDataSetChanged();
-            }
-        }
-    }
+
 
     @Override
     public void onClick(View view) {

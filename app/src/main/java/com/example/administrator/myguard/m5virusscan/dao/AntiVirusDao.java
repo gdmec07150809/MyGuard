@@ -16,7 +16,7 @@ public class AntiVirusDao {
     private  static String dbname;
     public AntiVirusDao(Context context) {
         this.context = context;
-        dbname = "/data/data/" + context.getPackageName() + "/file/antivirus.db";
+        dbname = "/data/data/" + context.getPackageName() + "/files/antivirus.db";
     }
     public String checkVirus(String md5){
         String desc=null;
@@ -74,9 +74,10 @@ public class AntiVirusDao {
     public void add(String desc,String md5){
         SQLiteDatabase db=SQLiteDatabase.openDatabase(dbname,null,SQLiteDatabase.OPEN_READWRITE);
         ContentValues values=new ContentValues();
+        values.put("md5",md5);
         values.put("desc",desc);
         values.put("type",6);
-        values.put("name","Andriod.Hack.i22hkt.a");
+        values.put("name","Android.Hack.i22hkt.a");
         db.insert("datable",null,values);
         db.close();
 

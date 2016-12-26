@@ -1,7 +1,7 @@
 package com.example.administrator.myguard.m6cleancache;
 
 import android.content.Intent;
-import android.content.pm.IPackageDataObserver;
+import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageStats;
@@ -143,7 +143,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
 
     public void getCacheSize(PackageInfo info) {
         try {
-            Method method = PackageManager.class.getDeclaredMethod("getPackagesSizeInfo", String.class, IPackageDataObserver.class);
+            Method method = PackageManager.class.getDeclaredMethod("getPackageSizeInfo", String.class, IPackageStatsObserver.class);
             method.invoke(pm, info.packageName, new MyPackObserver(info));
         } catch (Exception e) {
             e.printStackTrace();

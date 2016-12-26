@@ -83,6 +83,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
             edit.commit();
         };
     };
+    @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
        requestWindowFeature(Window.FEATURE_NO_TITLE);

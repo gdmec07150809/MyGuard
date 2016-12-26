@@ -31,6 +31,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         copyDB("antivirus.db");
         initView();
     }
+    @Override
     protected void onResume(){
         String string=mSP.getString("lastVirusScan","您还没有查杀病毒！");
         mLastTimeTV.setText(string);
@@ -80,6 +81,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
 
 
     }
+    @Override
     public void onClick(View v){
         switch (v.getId()){
             case R.id.imgv_leftbtn:

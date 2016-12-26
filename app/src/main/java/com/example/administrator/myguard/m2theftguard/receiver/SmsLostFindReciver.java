@@ -26,7 +26,7 @@ public class SmsLostFindReciver extends BroadcastReceiver {
         sharedPreferences=context.getSharedPreferences("config", Activity.MODE_PRIVATE);
         boolean protecting=sharedPreferences.getBoolean("protecting",true);
         if (protecting){
-            Object[]objs= (Object[]) intent.getExtras().get("pdus");
+            Object[] objs= (Object[]) intent.getExtras().get("pdus");
             DevicePolicyManager dpm= (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
             for (Object obj:objs){
                 SmsMessage smsMessage=SmsMessage.createFromPdu((byte[])obj );

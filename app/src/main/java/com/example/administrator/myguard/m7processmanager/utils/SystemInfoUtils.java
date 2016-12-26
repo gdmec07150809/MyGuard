@@ -25,29 +25,14 @@ public class SystemInfoUtils {
         }
         return false;
     }
-    public static int getRunningProcessCount(Context context) {
-        ActivityManager am=(ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo>runningAppProcessInfos=am.getRunningAppProcesses();
-        int count=runningAppProcessInfos.size();
-        return count;
-    }
-
-    public static long getAvailMem(Context context) {
-        ActivityManager am=(ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
-        ActivityManager.MemoryInfo outInfo=new ActivityManager.MemoryInfo();
-        am.getMemoryInfo(outInfo);
-        long availMem=outInfo.availMem;
-        return availMem;
-    }
-
     public static long getTotalMem()  {
         try {
-            FileInputStream fis=new FileInputStream(new File("/proc/meninfo"));
+            FileInputStream fis=new FileInputStream(new File("/proc/meminfo"));
             BufferedReader br=new BufferedReader(new InputStreamReader(fis));
             String totalInfo=br.readLine();
             StringBuffer sb=new StringBuffer();
             for (char c:totalInfo.toCharArray()){
-                if (c>='0'&&c<'9'){
+                if (c>='0'&&c<='9'){
                     sb.append(c);
                 }
             }
@@ -58,4 +43,21 @@ public class SystemInfoUtils {
             return 0;
         }
     }
+    public static long getAvailMem(Context context) {
+        ActivityManager am=(ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo outInfo=new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(outInfo);
+        long availMem=outInfo.availMem;
+        return availMem;
+    }
+    public static int getRunningProcessCount(Context context) {
+        ActivityManager am=(ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos=am.getRunningAppProcesses();
+        int count=runningAppProcessInfos.size();
+        return count;
+    }
+
+
+
+
 }

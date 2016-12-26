@@ -29,6 +29,7 @@ public class AutoKillProcessService extends Service {
 
 
     class ScreenLockReceiver extends BroadcastReceiver{
+        @Override
         public void onReceive(Context context, Intent intent){
             ActivityManager am=(ActivityManager)getSystemService(ACTIVITY_SERVICE);
             for (ActivityManager.RunningAppProcessInfo info:am.getRunningAppProcesses()){

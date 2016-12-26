@@ -39,7 +39,7 @@ public class ProcessManagerSettingActivity extends AppCompatActivity implements 
         mShowSysAppsTgb=(ToggleButton)findViewById(R.id.tgb_showsys_process);
         mKillProcessTgb=(ToggleButton)findViewById(R.id.tgb_killprocess_lockscreen);
         mShowSysAppsTgb.setChecked(mSP.getBoolean("showSystemProcess",true));
-        running= SystemInfoUtils.isServiceRunning(this,"cn.itcast.mobilesafe.chapter07.service.AutoKillProcessService");
+        running= SystemInfoUtils.isServiceRunning(this,"cn.itcast.mobliesafe.chapter07.service.AutoKillProcessService");
         mKillProcessTgb.setChecked(running);
         initListener();
     }
@@ -48,7 +48,14 @@ public class ProcessManagerSettingActivity extends AppCompatActivity implements 
         mKillProcessTgb.setOnCheckedChangeListener(this);
         mShowSysAppsTgb.setOnCheckedChangeListener(this);
     }
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.imgv_leftbtn:
+                finish();
+                break;
+        }
+    }
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
     switch (buttonView.getId()){
@@ -72,12 +79,5 @@ public class ProcessManagerSettingActivity extends AppCompatActivity implements 
         edit.commit();
     }
 
-    @Override
-    public void onClick(View v) {
-    switch (v.getId()){
-        case R.id.imgv_leftbtn:
-            finish();
-            break;
-    }
-    }
+
 }

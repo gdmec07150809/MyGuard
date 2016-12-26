@@ -15,7 +15,7 @@
       android:id="@+id/tv_name"
         style="@style/textview16sp"
         android:layout_toRightOf="@+id/view1"
-        android:layout_marginTop="@+id/view1"
+        android:layout_alignTop="@+id/view1"
         android:textColor="@color/purple"/>
     <TextView
        android:id="@+id/tv_phone"

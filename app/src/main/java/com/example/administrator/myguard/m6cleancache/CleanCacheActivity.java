@@ -117,7 +117,8 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         mMemoryTV=(TextView)findViewById(R.id.tv_cleancache_memory);
         mMemoryUnitTV=(TextView)findViewById(R.id.tv_cleancache_memoryunit);
         mCleanCacheFL=(FrameLayout)findViewById(R.id.fl_cleancache);
-        mSizeTV=(TextView)findViewById(R.id.fl_finnishclean);
+        mFinishCleanFL= (FrameLayout) findViewById(R.id.fl_finnishclean);
+        mSizeTV= (TextView) findViewById(R.id.tv_cleanmemorysize);
         findViewById(R.id.btn_finish_cleancache).setOnClickListener(this);
     }
     public void onClick(View v){

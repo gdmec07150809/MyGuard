@@ -30,7 +30,8 @@ public class BlackNumberDao {
         SQLiteDatabase db =blackNumberOpenHelper.getWritableDatabase();
         ContentValues values =new ContentValues();
         if(blackContactInfo.phoneNumber.startsWith("+86")){
-            blackContactInfo.phoneNumber = blackContactInfo.phoneNumber.substring(3, blackContactInfo.phoneNumber.length());
+            blackContactInfo.phoneNumber = blackContactInfo.phoneNumber
+                    .substring(3, blackContactInfo.phoneNumber.length());
         }
         values.put("number",blackContactInfo.phoneNumber);
         values.put("name",blackContactInfo.contactName);
@@ -42,12 +43,41 @@ public class BlackNumberDao {
             return true;
         }
     }
+    public boolean detele(BlackContactInfo blackContactInfo) {
+        SQLiteDatabase db = blackNumberOpenHelper.getWritableDatabase();
+        int rownumber =db.delete("blacknumber","number=?",
+                new String[] {blackContactInfo.phoneNumber});
+        if(rownumber == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public List<BlackContactInfo> getPageBlackNumber(int pageumber, int pagesize) {
+        SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "select number,mode,name from blacknumber limit ? offset ?",
+                new String[] {
+                        String.valueOf(pagesize),
+                        String.valueOf(pagesize * pageumber)});
 
-
+        List<BlackContactInfo> mBlackContactInfos = new ArrayList<BlackContactInfo>();
+        while(cursor.moveToNext()){
+            BlackContactInfo info = new BlackContactInfo();
+            info.phoneNumber = cursor.getString(0);
+            info.mode= cursor.getInt(1);
+            info.contactName =cursor.getString(2);
+            mBlackContactInfos.add(info);
+        }
+        cursor.close();
+        db.close();
+        SystemClock.sleep(30);
+        return mBlackContactInfos;
+    }
     public boolean IsNumberExist(String number){
         SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
         Cursor cursor =db.query("blacknumber", null,"number=?",new String[]{number},null,null,null);
-        int mode = 0;
+
         if(cursor.moveToNext()){
             cursor.close();
             db.close();
@@ -79,39 +109,10 @@ public class BlackNumberDao {
         return count;
     }
 
-    public boolean detele(BlackContactInfo blackContactInfo) {
-        SQLiteDatabase db = blackNumberOpenHelper.getWritableDatabase();
-        int rownumber =db.delete("blacknumber","number=?",
-                new String[] {blackContactInfo.phoneNumber});
-        if(rownumber == 0){
-            return false;
-        }else{
-            return true;
-        }
-    }
 
 
-    public List<BlackContactInfo> getPageBlackNumber(int pageumber, int pagesize) {
-        SQLiteDatabase db = blackNumberOpenHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "select number,mode,name from blacknumber limit ? offset ?",
-                new String[] {
-                        String.valueOf(pagesize),
-                        String.valueOf(pagesize*pageumber)});
 
-        List<BlackContactInfo> mBlackContactInfos = new ArrayList<BlackContactInfo>();
-        while(cursor.moveToNext()){
-            BlackContactInfo info = new BlackContactInfo();
-            info.phoneNumber = cursor.getString(0);
-            info.mode= cursor.getInt(1);
-            info.contactName =cursor.getString(2);
-            mBlackContactInfos.add(info);
-        }
-        cursor.close();
-        db.close();
-        SystemClock.sleep(30);
-        return mBlackContactInfos;
-    }
+
 
 
 }

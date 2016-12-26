@@ -15,7 +15,7 @@ public class BlackContactInfo {
            case 2:
                return "短信拦截";
            case 3:
-                return "电话，短信拦截";
+                return "电话、短信拦截";
        }
         return "";
     }

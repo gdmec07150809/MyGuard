@@ -22,7 +22,7 @@ public class TaskInfoParser {
         ActivityManager am=(ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         PackageManager pm=context.getPackageManager();
         List<ActivityManager.RunningAppProcessInfo>processInfos=am.getRunningAppProcesses();
-        List<TaskInfo>taskInfos=new ArrayList<TaskInfo>();
+        List<TaskInfo> taskInfos=new ArrayList<TaskInfo>();
         for (ActivityManager.RunningAppProcessInfo processInfo:processInfos){
             String packname=processInfo.processName;
             TaskInfo taskInfo=new TaskInfo();

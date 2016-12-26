@@ -71,19 +71,14 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         mRemindTV=(TextView)findViewById(R.id.tv_traffic_remind);
     }
 
-    private void registReceive() {
-        receiver=new CorrectFlowReceiver();
-        IntentFilter filter=new IntentFilter();
-        filter.addAction("android.provider.Telephony.SMS_RECEIVED");
-        registerReceiver(receiver,filter);
-    }
+
 
     private void initData() {
         long totalflow=mSP.getLong("totalflow",0);
         long usedflow=mSP.getLong("usedflow",0);
-        if (totalflow>0&usedflow>=0){
-            float scale=usedflow/totalflow;
-            if (scale>0.9){
+        if (totalflow > 0 & usedflow >= 0){
+            float scale = usedflow / totalflow;
+            if (scale > 0.9){
                 mRemindIMGV.setEnabled(false);
                 mRemindTV.setText("您的套餐流量即将用完！");
             }else{
@@ -97,14 +92,19 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         Date date=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String dataString=sdf.format(date);
-        long mobileGPRS=dao.getMoblesGPRS(dataString);
-        if (mobileGPRS<0){
-            mobileGPRS=0;
+        long moblieGPRS=dao.getMoblesGPRS(dataString);
+        if (moblieGPRS < 0){
+            moblieGPRS = 0;
         }
-        mToDayTV.setText("本月已用："+Formatter.formatFileSize(this,mobileGPRS));
+        mToDayTV.setText("本日已用："+Formatter.formatFileSize(this,moblieGPRS));
     }
 
-
+    private void registReceive() {
+        receiver=new CorrectFlowReceiver();
+        IntentFilter filter=new IntentFilter();
+        filter.addAction("android.provider.Telephony.SMS_RECEIVED");
+        registerReceiver(receiver,filter);
+    }
 
     @Override
     public void onClick(View v) {
@@ -120,7 +120,8 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                     Toast.makeText(this,"您还没有设置运营商信息",Toast.LENGTH_SHORT).show();
                     break;
                 case 1:break;
-                case 2:smsManager.sendTextMessage("10010",null,"LLCX",null,null);
+                case 2:
+                    smsManager.sendTextMessage("10010",null,"LLCX",null,null);
                     break;
                 case 3:break;
 
@@ -131,11 +132,11 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     class CorrectFlowReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
-            Object[]objs=(Object[])intent.getExtras().get("pdus");
+            Object[] objs=(Object[])intent.getExtras().get("pdus");
             for (Object obj:objs){
                 SmsMessage smsMessage=SmsMessage.createFromPdu((byte[])obj);
                 String body=smsMessage.getMessageBody();
-                String address=smsMessage.getMessageBody();
+                String address=smsMessage.getOriginatingAddress();
                 if (!address.equals("10010")){
                     return;
                 }
@@ -156,30 +157,31 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                     }
                 }
                 SharedPreferences.Editor edit=mSP.edit();
-                edit.putLong("totalflow",used+left);
-                edit.putLong("usedflow",used+beyond);
+                edit.putLong("totalflow",used + left);
+                edit.putLong("usedflow",used + beyond);
                 edit.commit();
-                mTotalTV.setText("本月流量："+Formatter.formatFileSize(context,(used+left)));
-                mUsedTV.setText("本月已用："+Formatter.formatFileSize(context,(used+beyond)));
+                mTotalTV.setText("本月流量："+Formatter.formatFileSize(context,(used + left)));
+                mUsedTV.setText("本月已用："+Formatter.formatFileSize(context,(used + beyond)));
             }
 
         }
 
-    }private long getStringTofloat(String str) {
+    }
+    private long getStringTofloat(String str) {
         long flow=0;
         if (!TextUtils.isEmpty(str)){
             if (str.contains("KB")){
                 String[] split=str.split("KB");
                 float m=Float.parseFloat(split[0]);
-                flow=(long)(m*1024);
+                flow=(long)(m * 1024);
             }else if (str.contains("MB")){
                 String[] split=str.split("MB");
                 float m=Float.parseFloat(split[0]);
-                flow=(long)(m*1024*1024);
+                flow=(long)(m * 1024 * 1024);
             }else if (str.contains("GB")){
                 String[] split=str.split("GB");
                 float m=Float.parseFloat(split[0]);
-                flow=(long)(m*1024*1024*1024);
+                flow=(long)(m * 1024 * 1024 * 1024);
             }
         }
         return flow;
