@@ -9,7 +9,7 @@ import com.example.administrator.myguard.m1home.utils.MyUtils;
 import com.example.administrator.myguard.m1home.utils.VersionUpdateUtils;
 
 public class SplashActivity extends AppCompatActivity {
-    private TextView mVersionTV;
+     private TextView mVersionTV;
     private String mVersion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
