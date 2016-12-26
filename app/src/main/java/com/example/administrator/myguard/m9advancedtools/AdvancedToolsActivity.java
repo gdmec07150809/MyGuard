@@ -22,7 +22,8 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
     {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_advanced_tools);
+        setContentView(R.layout.activity_
+                advanced_tools);
         initView();
     }
 
