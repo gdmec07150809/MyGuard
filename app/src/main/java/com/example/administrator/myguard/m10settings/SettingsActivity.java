@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.administrator.myguard.R;
 import com.example.administrator.myguard.m10settings.utils.SystemInfoUtils;
 import com.example.administrator.myguard.m10settings.widget.SettingView;
+import com.example.administrator.myguard.m9advancedtools.service.AppLockService;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener,SettingView.OnCheckedStatusIsChanged{
     private SettingView mBlackNumSV;
@@ -66,12 +67,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.sv_applock_set:
                 saveStatus("AppLockStatus",isChecked);
-                /*if(isChecked){
+                if(isChecked){
                     intent=new Intent(this,AppLockService.class);
                     startService(intent);
                 }else{
                     stopService(intent);
-                }*/
+                }
                 break;
         }
     }
